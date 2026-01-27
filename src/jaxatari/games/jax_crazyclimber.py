@@ -142,7 +142,18 @@ class JaxCrazyClimber(JaxEnvironment):
         ]
 
     def reset(self, key=None):
-        """Reset game to initial state."""
+        """Reset game to initial state.
+        
+        Initializes the game state with player at the bottom of the building,
+        lives restored, score at 0, and camera positioned to show the starting area.
+        
+        Args:
+            key: Optional JAX random key (unused in current implementation).
+            
+        Returns:
+            Tuple of (observation, state) where observation is CrazyClimberObservation
+            and state is CrazyClimberState.
+        """
         # Always start horizontally centered on screen (works for both levels)
         start_x = self.consts.WIDTH // 2
         start_y = self.consts.PLAYER_START_Y
@@ -185,7 +196,17 @@ class JaxCrazyClimber(JaxEnvironment):
         return self._get_observation(state), state
         
     def _get_observation(self, state):
-        """Convert game state to observation for the agent."""
+        """Convert game state to observation for the agent.
+        
+        Extracts player entity information and score/lives from the full game state,
+        returning an object-centric observation suitable for learning algorithms.
+        
+        Args:
+            state: CrazyClimberState.
+            
+        Returns:
+            CrazyClimberObservation with player AABB and game info.
+        """
         player = EntityPosition(
             x=state.player_x,
             y=state.player_y,
