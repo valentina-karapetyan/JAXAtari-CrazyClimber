@@ -51,7 +51,7 @@ import jax
 import jaxatari
 
 # Create an environment
-env = jaxatari.make("pong")  # or "seaquest", "kangaroo", "freeway", etc.
+env = jaxatari.make("pong")  # or "seaquest", "kangaroo", "freeway", "crazyclimber", etc.
 
 # Get available games
 available_games = jaxatari.list_available_games()
@@ -146,14 +146,48 @@ python3 scripts/play.py -g Pong
 
 ## Supported Games
 
-| Game     | Supported |
-|----------|-----------|
-| Freeway  |    ✅     |
-| Kangaroo |    ✅     |
-| Pong     |    ✅     |
-| Seaquest |    ✅     |
+| Game         | Supported |
+|--------------|-----------|
+| Breakout     |    ✅     |
+| Crazy Climber|    ✅     |
+| Freeway      |    ✅     |
+| Kangaroo     |    ✅     |
+| Pong         |    ✅     |
+| Seaquest     |    ✅     |
 
 > More games can be added via the uniform wrapper system.
+
+### Game Details
+
+#### Crazy Climber
+A JAX-accelerated implementation of the classic 1980 arcade game. The player must climb two buildings in Level 1 or a single building in Level 2, avoiding hazards like closing windows and falling objects.
+
+**Features:**
+- Authentic hand-over-hand climbing mechanics (alternating left/right hand movement)
+- Two distinct levels with different layouts and hazards
+- Animated window closing hazards with dynamic timing
+- Falling objects on Level 2
+- Camera system that follows the player up the building
+- Object-centric observations with player position and score
+
+**Example:**
+```python
+import jaxatari
+
+# Create Crazy Climber environment
+env = jaxatari.make("crazyclimber")
+obs, state = env.reset()
+
+# Take a step with UP action (climb)
+action = 1  # UP action
+obs, state, reward, done, info = env.step(state, action)
+
+# Access player position and game state
+player_x = obs.player.x
+player_y = obs.player.y
+score = obs.score
+lives = obs.lives
+```
 
 ---
 
