@@ -1,3 +1,9 @@
+"""JAX-based Crazy Climber arcade game implementation.
+
+Features hand-over-hand climbing mechanics, two distinct levels with different
+hazards, and object-centric observations. Fully JIT-compiled for GPU acceleration.
+"""
+
 import os
 import pygame
 import sys
