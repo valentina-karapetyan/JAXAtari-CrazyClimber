@@ -163,7 +163,7 @@ python3 scripts/play.py -g Pong
 A JAX-accelerated implementation of the classic 1980 arcade game. The player must climb two buildings in Level 1 or a single building in Level 2, avoiding hazards like closing windows and falling objects.
 
 **Features:**
-- Authentic hand-over-hand climbing mechanics (alternating left/right hand movement)
+- Authentic climbing mechanics 
 - Two distinct levels with different layouts and hazards
 - Animated window closing hazards with dynamic timing
 - Falling objects on Level 2
